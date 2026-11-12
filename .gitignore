@@ -1,0 +1,29 @@
+*.pyc
+*.log
+node_modules
+coverage/
+hazel/logs
+hazel/export_deliverables
+hazel/cantaloupe/*
+hazel/staticfiles
+hazel/media/packages
+hazel/media/build/
+hazel/uploadedfiles/*
+hazel/settings_local.py
+webpack-stats.json
+.vscode/
+*.egg-info
+.DS_STORE
+CACHE
+frontend_configuration
+
+# Packaging
+build/
+dist/
+
+# Local Python environment and toolkit settings
+ENV/
+
+# Cypress local run artifacts
+cypress/videos/
+cypress/screenshots/
