@@ -18,7 +18,7 @@
         "vitest": "vitest --run --coverage"
     },
     "dependencies": {
-        "arches": "archesproject/arches#dev/8.2.x"
+        "arches": "git+https://github.com/flaxandteal/arches.git#03d6569e2e2cfdc932e83ebcad9597a18ef5cca5"
     },
     "nodeModulesPaths": {
     },
