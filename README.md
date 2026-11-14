@@ -119,8 +119,9 @@ make create-github-action
 #      - Build-Arches `context: .` -> `context: ..`, because docker/Dockerfile
 #        copies <project>/... relative to the checkout's parent directory
 #      - INSTALL_CORAL_PACKAGE "True" -> "False"
-#      - arches-postgis:docker-8.2.0a3 -> docker-8.1 (twice); the 8.2.0a3 tag
-#        was never published, and docker-8.1 is what the toolkit's compose uses
+#      - arches-postgis:docker-8.2.0a3 -> postgis/postgis:16-3.4 (twice); the
+#        8.2.0a3 tag was never published, and Django 6 needs PostgreSQL 15+
+#        (both fixed in the toolkit by flaxandteal/arches-container-toolkit#25)
 #    and add the repo to bfc-fluxcd cluster/srv-github-ci (a RunnerDeployment
 #    as for brace), since the self-hosted runners are registered per repository
 
