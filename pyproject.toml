@@ -24,6 +24,9 @@ classifiers = [
 requires-python = ">=3.12"
 dependencies = [
     "arches==8.2.0a25",
+    # RedisCache for deployed instances (package_settings in hazel-fluxcd);
+    # Arches refuses a non-ratelimiting cache with DEBUG off (arches.E001)
+    "redis>=5",
 ]
 version = "0.0.1"
 
