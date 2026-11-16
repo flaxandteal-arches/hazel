@@ -201,8 +201,19 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "arches.app.utils.middleware.SetAnonymousUser",
+    # After SetAnonymousUser, so it sees the final request.user
+    "hazel.gate.GateTokenMiddleware",
     # "silk.middleware.SilkyMiddleware",
 ]
+
+# Gateway JWT for signed-in users (hazel/gate.py). Deployed instances get the
+# key and issuer from hazel-fluxcd; unset key disables the middleware.
+GATE_JWT_PRIVATE_KEY = os.environ.get("GATE_JWT_PRIVATE_KEY")
+GATE_JWT_ISSUER = os.environ.get("GATE_JWT_ISSUER", "hazel")
+GATE_JWT_KID = os.environ.get("GATE_JWT_KID", "gate-1")
+GATE_JWT_TTL = int(os.environ.get("GATE_JWT_TTL", "3600"))
+GATE_JWT_COOKIE = "hazel_gate"
+GATE_JWT_SECURE = os.environ.get("GATE_JWT_SECURE", "True") == "True"
 
 MIDDLEWARE.insert(  # this must resolve to first MIDDLEWARE entry
     0, "django_hosts.middleware.HostsRequestMiddleware"
