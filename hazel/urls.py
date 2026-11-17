@@ -19,6 +19,9 @@ urlpatterns.append(path("", include("arches.extensions.querysets.urls")))
 urlpatterns.append(path("", include("arches.extensions.vue_components.urls")))
 urlpatterns.append(path("", include("arches.extensions.controlled_lists.urls")))
 
+# Also includes arches_resource_sets and arches_modular_reports urls
+urlpatterns.append(path("", include("arches_search.urls")))
+
 urlpatterns.append(path("", include("arches.urls")))
 
 # Adds URL pattern to serve media files during development

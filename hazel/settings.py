@@ -170,6 +170,12 @@ INSTALLED_APPS = (
     "rest_framework",
     # "silk",
     "hazel",  # Ensure the project is listed before any other arches applications
+    # PostgreSQL-backed search (works with ELASTICSEARCH_ENABLED = False). Its
+    # templates override core's, so it must come before arches.app (added
+    # last, below); order as in arches-search's own settings.
+    "arches_search",
+    "arches_resource_sets",
+    "arches_modular_reports",
     # Arches applications bundled with arches. Order matters: controlled_lists
     # registers against querysets at startup. Remove any you do not use, along
     # with the settings above that reference them.
@@ -205,6 +211,13 @@ MIDDLEWARE = [
     "hazel.gate.GateTokenMiddleware",
     # "silk.middleware.SilkyMiddleware",
 ]
+
+# Arches can run without Elasticsearch, with arches_search providing search.
+# The toolkit entrypoint reads the same env var to skip the ES wait and the
+# 'manage.py es' steps. Off requires the default deny PERMISSION_FRAMEWORK.
+ELASTICSEARCH_ENABLED = os.environ.get("ELASTICSEARCH_ENABLED", "True") not in (
+    "False", "false", "0", "no", "No",
+)
 
 # Gateway JWT for signed-in users (hazel/gate.py). Deployed instances get the
 # key and issuer from hazel-fluxcd; unset key disables the middleware.

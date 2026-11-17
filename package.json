@@ -18,14 +18,18 @@
         "vitest": "vitest --run --coverage"
     },
     "dependencies": {
-        "arches": "git+https://github.com/flaxandteal/arches.git#03d6569e2e2cfdc932e83ebcad9597a18ef5cca5"
+        "arches": "git+https://github.com/flaxandteal/arches.git#03d6569e2e2cfdc932e83ebcad9597a18ef5cca5",
+        "arches_search": "git+https://github.com/archesproject/arches-search.git#1a2173f0f1b5365102a3eca2a67262b6d11bf2e9",
+        "arches_modular_reports": "git+https://github.com/archesproject/arches-modular-reports.git#0fb51b31a629e1135599a0ab4bbf1fd880c7fa9c",
+        "arches_resource_sets": "git+https://github.com/archesproject/arches-resource-sets.git#dce1f2cdec69c6a395eabc114bbf7ad2da8601a7"
     },
-    "nodeModulesPaths": {
-    },
+    "nodeModulesPaths": {},
     "overrides": {
         "moment-timezone": "^0.5.45",
         "nomnom": "npm:@gerhobbelt/nomnom",
-        "rimraf": "^5.0.7", 
-        "underscore": "^1.13.6"
+        "rimraf": "^5.0.7",
+        "underscore": "^1.13.6",
+        "arches": "$arches",
+        "arches-modular-reports": "git+https://github.com/archesproject/arches-modular-reports.git#0fb51b31a629e1135599a0ab4bbf1fd880c7fa9c"
     }
 }
